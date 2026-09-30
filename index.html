@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080808">
+  <title>Jabberwock Rumble</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <header class="topbar">
+    <h1 aria-label="Jabberwock Rumble"><span>JABBERWOCK</span><em>RUMBLE</em></h1>
+    <div class="top-actions">
+      <button id="sound" class="icon-button" aria-label="Enable sound" title="Sound">♪ <span>SOUND OFF</span></button>
+      <button id="help" class="icon-button" aria-label="How to play" title="How to play">?</button>
+    </div>
+  </header>
+  <section class="game-shell" aria-label="Jabberwock Island fighting game">
+    <div class="arena" id="arena">
+      <canvas id="game" width="1200" height="675" tabindex="0" aria-label="Akane versus Nekomaru. A D move, W jump, J hit, K guard, L special."></canvas>
+      <div class="hud">
+        <div class="fighter-hud player">
+          <div class="fighter-line"><span class="role">YOU</span><b>AKANE OWARI</b><span id="p-wins" class="wins">○ ○</span></div>
+          <div class="health"><div id="p-health"></div></div>
+          <div class="meter-line"><div class="meter"><div id="p-meter"></div></div><span id="p-power">SPECIAL 0%</span></div>
+        </div>
+        <div class="clock"><strong id="timer">60</strong><span id="round">ROUND 01</span></div>
+        <div class="fighter-hud enemy">
+          <div class="fighter-line"><span id="e-wins" class="wins">○ ○</span><b id="enemy-name">NEKOMARU NIDAI</b><span class="role">CPU</span></div>
+          <div class="health"><div id="e-health"></div></div>
+          <div class="meter-line"><span id="e-power">SPECIAL 0%</span><div class="meter"><div id="e-meter"></div></div></div>
+        </div>
+      </div>
+      <button id="pause" class="arena-pause" aria-label="Pause game" title="Pause (Esc)" hidden>Ⅱ</button>
+      <div class="host" id="host"><canvas id="bear" width="100" height="100" aria-label="Monokuma"></canvas><span id="host-message">UPUPUPU…</span><span id="modifier-time"></span></div>
+      <div class="intro" id="intro"><div class="vs" aria-hidden="true">VS</div><button class="primary" id="start" disabled><span id="start-label">LOADING…</span></button></div>
+      <div class="screen-overlay" id="overlay" hidden>
+        <span id="overlay-kicker">PAUSED</span><h2 id="overlay-title">PAUSED</h2><p id="overlay-copy"></p>
+        <button class="primary" id="continue">RESUME</button><button class="text-button" id="back-menu">FIGHTER SELECT</button>
+      </div>
+      <div class="announcement" id="announcement" aria-live="polite"></div>
+      <span id="arena-tip" class="arena-tip" aria-live="polite"></span>
+    </div>
+    <div class="loadout" id="loadout">
+      <div class="skin-group"><span class="group-label">AKANE</span><div class="skin-options" id="akane-skins"><button data-skin="classic" aria-pressed="true">Classic</button><button data-skin="island" aria-pressed="false">Island</button><button data-skin="midnight" aria-pressed="false">Sunset</button></div></div>
+      <div class="skin-group"><span class="group-label">NEKOMARU</span><div class="skin-options" id="nekomaru-skins"><button data-skin="classic" aria-pressed="true">Classic</button><button data-skin="mecha" aria-pressed="false">Mechamaru</button></div></div>
+      <label class="difficulty"><span class="sr-only">Difficulty</span><select id="difficulty" aria-label="Difficulty"><option value="easy">EASY</option><option value="normal" selected>NORMAL</option><option value="hard">HARD</option></select></label>
+    </div>
+  </section>
+  <div class="controls" aria-label="Keyboard controls">
+    <span><kbd>A</kbd><kbd>D</kbd> MOVE</span><span><kbd>W</kbd> JUMP</span><span><kbd>J</kbd> HIT</span><span><kbd>K</kbd> GUARD</span><span><kbd>L</kbd> SPECIAL</span><span class="pause-hint"><kbd>ESC</kbd> PAUSE</span>
+  </div>
+  <div class="touch-controls" aria-label="Touch controls">
+    <div><button data-input="left" aria-label="Move left">◀</button><button data-input="right" aria-label="Move right">▶</button><button data-input="jump" aria-label="Jump">↑</button></div>
+    <div><button data-input="block" aria-label="Hold to guard">GUARD</button><button data-input="attack" aria-label="Attack">HIT</button><button data-input="special" aria-label="Special attack">ULT</button></div>
+  </div>
+  <dialog id="instructions">
+    <button class="dialog-close" id="close-help" aria-label="Close instructions">×</button>
+    <h2>HOW TO PLAY</h2>
+    <div class="help-grid">
+      <p><b>YOU ARE AKANE</b>A / D or ← / → move. W, ↑ or Space jumps. Tap J for a three-hit combo.</p>
+      <p><b>READ THE WIND-UP</b>Hold K to guard. Block just before a hit for a perfect guard. Jump over slams.</p>
+      <p><b>SPECIAL: L</b>Hits and guards fill your meter. When full, get close and unleash your special.</p>
+      <p><b>MONOKUMA'S RULES</b>Dodge marked coconuts. Grab food. Expect low gravity and sudden speed boosts.</p>
+    </div>
+    <p class="help-last">First to 2 wins. 60 seconds per round. Esc / P pauses. Skins are cosmetic.</p>
+    <button id="motion" class="motion-option" aria-pressed="false">REDUCE FLASH & SHAKE</button>
+    <button id="got-it" class="primary">GOT IT</button>
+    <small class="credits">Unofficial Danganronpa fan game · Original generated artwork</small>
+  </dialog>
+</main>
+<script src="engine.js"></script><script src="sprite-data.js"></script><script src="assets/akane-data.js"></script><script src="assets/nekomaru-data.js"></script><script src="game.js"></script>
+</body></html>

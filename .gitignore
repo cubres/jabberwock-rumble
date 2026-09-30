@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+
+# Earlier art iterations are preserved locally; the game uses the v2 sheets.
+/assets/akane-classic.png
+/assets/akane-island.png
+/assets/akane-midnight.png
+/assets/nekomaru-classic.png
+/assets/nekomaru-mecha.png
+/assets/akane-data-v2.js
+/assets/akane-art-prompts-v2.json
